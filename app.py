@@ -7,7 +7,7 @@ from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
 # --- API KEY SETUP ---
-os.environ["GOOGLE_API_KEY"] = "AIza..." 
+os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"] 
 
 
 

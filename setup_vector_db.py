@@ -6,7 +6,7 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader, TextLoader
 
-os.environ["GOOGLE_API_KEY"] = "AIza...." # PASTE YOUR GOOGLE API KEY HERE
+os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]# PASTE YOUR GOOGLE API KEY HERE
 
 # Define the path to the data folder and the persistent database directory
 DATA_PATH = 'data/'
