@@ -1,0 +1,26 @@
+# Ignore the virtual environment
+evgpt-venv/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore Git files
+.git/
+.gitignore
+.gitattributes
+
+# Ignore IDE/OS files
+.vscode/
+.idea/
+*.DS_Store
+
+# Ignore local environment files and secrets
+.env
+.streamlit/
+
+# We don't need the raw data or the setup script in the final app,
+# only the generated 'db' folder.
+data/
+setup_vector_db.py
