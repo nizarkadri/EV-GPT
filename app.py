@@ -7,7 +7,12 @@ from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 
 # --- API KEY SETUP ---
-os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"] 
+# The key will be securely injected into the container's environment by AWS ECS
+# We'll add a check to ensure it's present.
+if "GOOGLE_API_KEY" not in os.environ:
+    st.error("Google API Key not found. Please set the GOOGLE_API_KEY environment variable.")
+    st.stop()
+# os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"] 
 
 
 
