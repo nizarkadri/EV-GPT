@@ -1,28 +1,15 @@
-# --- Top-Level Application Requirements ---
+# --- Final Application Requirements ---
 
-# For the web application interface
+# Pin protobuf to a stable, older version to resolve deep dependency conflicts.
+protobuf==3.20.3
+
+# Core libraries
 streamlit
-
-# Core LangChain library
 langchain
-
-# For community integrations like loaders and vector stores
 langchain-community
-
-# For Google's specific models (Gemini and embeddings)
 langchain-google-genai
-
-# The vector database
 chromadb
-
-# For loading and parsing PDF files
 pypdf
-
-# For handling encrypted PDFs (a required dependency for pypdf)
 cryptography
-
-# For token counting, often used by LangChain
 tiktoken
-
-# The AWS SDK for Python, used to fetch secrets from AWS Secrets Manager
 boto3

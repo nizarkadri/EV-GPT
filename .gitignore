@@ -1,52 +1,23 @@
-
-Here's the .gitignore file:
-
-```gitignore
 # Python
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-build/
-develop-eggs/
-dist/
-eggs/
-*.egg-info/
-*.egg
+*.pyc
 
 # Virtual Environment
 evgpt-venv/
 venv/
-ENV/
 
 # IDE
 .idea/
 .vscode/
-*.swp
-*.swo
-.project
-.pydevproject
 
 # Project specific
-db/
+# We are NOT ignoring the db/ folder because it's part of the source now.
 *.env
 .env
+.streamlit/
+
+# The raw data is not needed in the repo if the DB is pre-built
+data/
 
 # Logs
 *.log
-logs/
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Data files
-data/*.pdf
-data/*.txt

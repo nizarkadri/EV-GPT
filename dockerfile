@@ -1,24 +1,26 @@
-# 1. Use an official Python runtime as a parent image
-FROM python:3.10-slim
+# Use the stable and widely compatible Python 3.11 as the base image.
+FROM python:3.11-slim
 
-# 2. Set the working directory in the container
+# Set the working directory
 WORKDIR /app
 
-# 3. Copy the requirements file into the container
+# Copy the requirements file and install dependencies.
 COPY requirements.txt .
-
-# 4. Install any needed packages specified in requirements.txt
-# We use --no-cache-dir to keep the image size small
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 5. Copy the rest of your application code into the container
-# This includes app.py, the db/ folder, etc.
+# Copy ALL your application files into the container.
+# This assumes you have already run setup_vector_db.py locally
+# and the 'db' folder exists in your project directory.
 COPY . .
 
-# 6. Expose the port Streamlit runs on
+# Add a non-root user and change ownership for security and permissions.
+RUN useradd -m -u 1000 python
+RUN chown -R python:python /app
+USER python
+
+# Expose the port for Streamlit
 EXPOSE 8501
 
-# 7. Define the command to run your app when the container starts
-# The --server.enableCORS=false is a good practice for security when behind a proxy.
-# The --server.address=0.0.0.0 makes the app accessible from outside the container.
+# Use the "exec form" of CMD. This runs the command as the main process (PID 1),
+# allowing it to properly receive and handle OS signals like SIGTERM from 'docker stop'.
 CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.enableCORS=false"]

@@ -18,9 +18,6 @@ __pycache__/
 
 # Ignore local environment files and secrets
 .env
-.streamlit/
 
 # We don't need the raw data or the setup script in the final app,
 # only the generated 'db' folder.
-data/
-setup_vector_db.py
